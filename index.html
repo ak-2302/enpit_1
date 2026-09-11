@@ -14,13 +14,9 @@
             document.getElementById('result').value = calculate(e1, e2, op, decimalPoint).getValue();
         }
         function calculate(e1, e2, op, decimalPoint) {
-            // if(isNaN(e1) || isNaN(e2)){
-            // return alert("数字をいれてください")
-            // }
-            if (isNaN(e1)) {
-                return alert("数字をいれてください")
+            if(isNaN(e1) || isNaN(e2)){
+            return alert("数字をいれてください")
             }
-            //var f1 = bigDecimal(e1)
             const f1 = new bigDecimal(e1);
             const f2 = new bigDecimal(e2);
             switch (op) {
@@ -31,11 +27,10 @@
                 case 'multiply':
                     return decimalPointCalculate(f1.multiply(f2), decimalPoint)
                 case 'mod':
-                    // return decimalPointCalculate(f1.divide(f2), decimalPoint)
                     if (f2.getValue() == 0) {
                         return alert("0で割ることはできません")
                     }
-                    return decimalPointCalculate(f1.multiply(f2), decimalPoint)
+                    return decimalPointCalculate(f1.divide(f2), decimalPoint)
                 case 'square':
                     return decimalPointCalculate(f1.multiply(f1), decimalPoint)
                 default:
